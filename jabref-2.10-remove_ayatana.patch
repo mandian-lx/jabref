@@ -1,0 +1,24 @@
+--- jabref-2.10.orig/src/java/net/sf/jabref/JabRefFrame.java
++++ jabref-2.10/src/java/net/sf/jabref/JabRefFrame.java
+@@ -40,7 +40,7 @@
+ import javax.swing.event.ChangeEvent;
+ import javax.swing.event.ChangeListener;
+ 
+-import org.java.ayatana.ApplicationMenu;
++//import org.java.ayatana.ApplicationMenu;
+ 
+ import net.sf.jabref.export.*;
+ import net.sf.jabref.external.ExternalFileTypeEditor;
+@@ -565,9 +565,9 @@
+ 
+         // The following sets up integration with Unity's global menu, but currently (Nov 18, 2012)
+         // this doesn't work with OpenJDK 6 (leads to crash), only with 7.
+-        String javaVersion = System.getProperty("java.version", null);
+-        if (javaVersion.compareTo("1.7") >= 0)
+-            ApplicationMenu.tryInstall(this);
++        //String javaVersion = System.getProperty("java.version", null);
++        //if (javaVersion.compareTo("1.7") >= 0)
++        //    ApplicationMenu.tryInstall(this);
+ 
+     }
+ 

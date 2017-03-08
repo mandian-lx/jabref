@@ -1,0 +1,20 @@
+--- jabref-2.10.orig/build.xml
++++ jabref-2.10/build.xml
+@@ -157,10 +157,13 @@
+ 
+ 	<!-- Classpath for running the code generator -->
+ 	<path id="codegenerator">
+-		<pathelement location="${system.lib.dir}/jpfcodegen.jar" />
+-		<pathelement location="${system.lib.dir}/jpf.jar" />
+-		<pathelement location="${system.lib.dir}/jpf-boot.jar" />
+-		<pathelement location="${system.lib.dir}/velocity.jar" />
++		<pathelement location="/usr/share/java/jpfcodegen.jar" />
++		<pathelement location="/usr/share/java//jpf.jar" />
++		<pathelement location="/usr/share/java/jpf-boot.jar" />
++		<pathelement location="/usr/share/java/velocity.jar" />
++		<pathelement location="/usr/share/java/commons-logging.jar" />
++		<pathelement location="/usr/share/java/commons-collections.jar" />
++		<pathelement location="/usr/share/java/commons-lang.jar" />
+ 	</path>
+ 
+ 	<!-- Classpath for tests -->

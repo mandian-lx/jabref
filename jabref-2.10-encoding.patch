@@ -1,0 +1,11 @@
+--- jabref-2.10.orig/build.xml
++++ jabref-2.10/build.xml
+@@ -383,7 +383,7 @@
+ 	<!-- Creates javadocs -->
+ 	<target name="javadocs" depends="compile" description="Generates the javadocs">
+ 		<mkdir dir="${build.javadocs}" />
+-		<javadoc sourcepath="${java.dir}" destdir="${build.javadocs}" author="true" version="true" windowtitle="JabRef API" link="http://docs.oracle.com/javase/6/docs/api/">
++		<javadoc sourcepath="${java.dir}" destdir="${build.javadocs}" author="true" version="true" windowtitle="JabRef API" link="http://docs.oracle.com/javase/6/docs/api/" encoding="ISO-8859-1" docencoding="UTF-8">
+ 
+ 			<fileset dir="${java.dir}" defaultexcludes="yes">
+ 				<include name="**/*.java" />

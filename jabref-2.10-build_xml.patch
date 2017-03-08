@@ -1,0 +1,20 @@
+--- jabref-2.10.orig/build.xml
++++ jabref-2.10/build.xml
+@@ -238,7 +238,7 @@
+ 	</target>
+ 
+ 	<!-- Jars up project -->
+-	<target name="jars" depends="build, unjarlib">
++	<target name="jars" depends="build">
+ 		<mkdir dir="${build.lib}" />
+ 
+ 		<mkdir dir="${build.tmp}" />
+@@ -645,7 +645,7 @@
+ 		</jalopy>
+ 	</target>
+ 
+-	<taskdef name="jarbundler" classpath="${buildlib.dir}/jarbundler-2.2.0.jar" classname="net.sourceforge.jarbundler.JarBundler" />
++	<!--taskdef name="jarbundler" classpath="${buildlib.dir}/jarbundler-2.2.0.jar" classname="net.sourceforge.jarbundler.JarBundler" /-->
+ 
+ 	<target name="compresssrc">
+ 		<!-- clone current repo into tmp dir. Reason: we want to have a clean src.zip, but do not want to execute "git clean -xdf" to allow developers having some temporary files (and user.properties) -->
