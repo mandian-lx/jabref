@@ -34,28 +34,28 @@ BuildRequires:	ant
 BuildRequires:	antlr3-java
 BuildRequires:	antlr3-tool
 BuildRequires:	antlr-tool
-BuildRequires:	fontbox				# updated
-BuildRequires:	glazedlists			# NEW, uploaded
-BuildRequires:	jempbox				# updated
-BuildRequires:	jgoodies-common >= 1.4.0	# updated
-BuildRequires:	jgoodies-forms >= 1.6.0		# updated
-BuildRequires:	jgoodies-looks >= 2.5.0		# updated
-BuildRequires:	microba				# NEW, uploaded
+BuildRequires:	fontbox
+BuildRequires:	glazedlists
+BuildRequires:	jempbox
+BuildRequires:	jgoodies-common
+BuildRequires:	jgoodies-forms
+BuildRequires:	jgoodies-looks
+BuildRequires:	microba
 BuildRequires:	mysql-connector-java
 BuildRequires:	pdfbox
  BuildRequires:	postgresql-jdbc
-BuildRequires:	ritopt				# new (unbundeld)
-BuildRequires:	spin				# NEW, uploaded
+BuildRequires:	ritopt
+BuildRequires:	spin
 # plugins
 BuildRequires:	apache-commons-collections
 BuildRequires:	apache-commons-lang
 BuildRequires:	apache-commons-logging
-BuildRequires:	jpf				# NEW, uploaded
-BuildRequires:	jpf-boot			# NEW, uploaded
-BuildRequires:	jpfcodegen			# NEW, uploaded
+BuildRequires:	jpf
+BuildRequires:	jpf-boot
+BuildRequires:	jpfcodegen
 BuildRequires:	velocity
 # LibreOffice integration
-BuildRequires:	libreoffice-java >= 1:3.5.2
+BuildRequires:	libreoffice-java
 # tests
 BuildRequires:	junit
 
@@ -64,25 +64,25 @@ Requires:	jpackage-utils
 Requires:	antlr3-java
 Requires:	antlr3-tool
 Requires:	antlr-tool
-Requires:	fontbox				# updated
-Requires:	glazedlists			# NEW, uploaded
-Requires:	jempbox				# updated
-Requires:	jgoodies-common >= 1.4.0	# updated
-Requires:	jgoodies-forms >= 1.6.0		# updated
-Requires:	jgoodies-looks >= 2.5.0		# updated
-Requires:	microba				# NEW, uploaded
+Requires:	fontbox
+Requires:	glazedlists
+Requires:	jempbox
+Requires:	jgoodies-common
+Requires:	jgoodies-forms
+Requires:	jgoodies-looks
+Requires:	microba
 Requires:	mysql-connector-java
 Requires:	pdfbox
 Requires:	postgresql-jdbc
-Requires:	ritopt				# new (unbundeld)
-Requires:	spin				# NEW, uploaded
+Requires:	ritopt
+Requires:	spin
 # plugins
 Requires:	apache-commons-logging
-Requires:	jpf				# NEW, uploaded
-Requires:	jpf-boot			# NEW, uploaded
-Requires:	jpfcodegen			# NEW, uploaded
+Requires:	jpf
+Requires:	jpf-boot
+Requires:	jpfcodegen
 # libreoffice integration
-Requires:	libreoffice-java >= 1:3.5.2
+Requires:	libreoffice-java
 
 %description
 JabRef is a graphical Java application for editing BibTeX (.bib)
