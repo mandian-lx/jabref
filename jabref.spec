@@ -103,7 +103,7 @@ to convert from any import format to any export format.
 %{_javadir}/%{name}.jar
 %{_datadir}/applications/openmandriva-%{name}.desktop
 %{_iconsdir}/hicolor/*/apps/%{name}.png
-%{_iconsdir}/hicolor/*/apps/%{name}.svg
+#%{_iconsdir}/hicolor/*/apps/%{name}.svg
 %{_datadir}/pixmaps/%{name}.xpm
 %{_mandir}/man1/%{name}.1*
 %doc README.md
@@ -181,7 +181,7 @@ export CLASSPATH=$CLASSPATH:$(build-classpath apache-commons-collections apache-
 export CLASSPATH=$CLASSPATH:$(build-classpath ../../%{_lib}/libreoffice/program/classes/juh.jar ../../%{_lib}/libreoffice/program/classes/jurt.jar ../../%{_lib}/libreoffice/program/classes/ridl.jar ../../%{_lib}/libreoffice/program/classes/unoil.jar)
 
 # jars
-%ant jars 
+%ant jars
 
 # docs
 %ant docs
@@ -213,8 +213,8 @@ done
 install -dm 0755 %{buildroot}%{_datadir}/pixmaps/
 convert -size 32x32 src/images/%{oname}-icon-32.png %{buildroot}%{_datadir}/pixmaps/%{name}.xpm
 #   scalable
-install -dm 0755 %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/
-install -pm 0644 src/images/%{oname}-icon-48.png %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/%{name}.svg
+#install -dm 0755 %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/
+#install -pm 0644 src/images/%{oname}-icon-48.png %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/%{name}.svg
 
 # .desktop file
 install -dm 0755 %{buildroot}%{_datadir}/applications/
