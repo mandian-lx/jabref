@@ -1,0 +1,39 @@
+--- jabref-2.11.1/build.xml.plugins
++++ jabref-2.11.1/build.xml
+@@ -113,6 +113,17 @@
+ 		<filelist refid="jars" />
+ 	</path>
+ 
++	<!-- Classpath for running the code generator -->
++	<path id="codegenerator">
++		<pathelement location="/usr/share/java/jpfcodegen.jar" />
++		<pathelement location="/usr/share/java//jpf.jar" />
++		<pathelement location="/usr/share/java/jpf-boot.jar" />
++		<pathelement location="/usr/share/java/velocity.jar" />
++		<pathelement location="/usr/share/java/commons-logging.jar" />
++		<pathelement location="/usr/share/java/commons-collections.jar" />
++		<pathelement location="/usr/share/java/commons-lang.jar" />
++	</path>
++
+ 	<target name="run" depends="build">
+ 		<java classname="net.sf.jabref.JabRefMain" fork="true">
+ 			<classpath refid="classpath" />
+@@ -186,8 +197,17 @@
+ 		</java>
+ 	</target>
+     
++	<!-- Run the JPF Code Generator -->
++	<target name="generate-jpf" unless="needsNoRegenerate">
++		<echo>Generates plugins.</echo>
++		<java classname="net.sf.jabref.plugin.util.CodeGenerator" fork="true">
++			<arg value="${plugin.dir}" />
++			<classpath refid="codegenerator" />
++		</java>
++	</target>
++
+ 	<!-- Compiles project -->
+-	<target name="compile" depends="generate-antlr3, generate-antlr4">
++	<target name="compile" depends="generate-antlr3, generate-antlr4, generate-jpf">
+ 		<mkdir dir="${build.classes}" />
+ 		<javac destdir="${build.classes}" encoding="UTF8" source="1.7" target="1.7">
+ 			<src path="${java.dir}" />

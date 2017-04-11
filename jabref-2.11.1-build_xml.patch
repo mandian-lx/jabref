@@ -1,0 +1,20 @@
+--- jabref-2.11.1.orig/build.xml
++++ jabref-2.11.1/build.xml
+@@ -149,7 +168,7 @@
+ 		<copy file="${osxbin.dir}/MacAdapter.class" todir="${build.classes.osx}" />
+ 	</target>
+ 
+-	<target name="jars" depends="build, unjarlib" description="Jars up project">
++	<target name="jars" depends="build" description="Jars up project">
+ 		<mkdir dir="${build.lib}" />
+ 
+ 		<mkdir dir="${build.tmp}" />
+@@ -519,7 +538,7 @@
+ 	   Auxiliary targets
+ 	  +++++++++++++++++++++++++++++++++++++++++++++++++-->
+ 
+-	<taskdef name="jarbundler" classpath="${buildlib.dir}/jarbundler-2.2.0.jar" classname="net.sourceforge.jarbundler.JarBundler" />
++	<!--taskdef name="jarbundler" classpath="${buildlib.dir}/jarbundler-2.2.0.jar" classname="net.sourceforge.jarbundler.JarBundler" /-->
+ 
+ 	<target name="zipsrc">
+         <exec executable="git" searchpath="true" failifexecutionfails="true" outputproperty="devnull" errorproperty="devnull" output="${build.lib}/JabRef-${jabref.version}-src.zip">
