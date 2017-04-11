@@ -1,5 +1,5 @@
---- jabref-2.11.1.orig/src/main/java/net/sf/jabref/external/DroppedFileHandler.java	2015-11-16 08:27:56.000000000 +0100
-+++ jabref-2.11.1/src/main/java/net/sf/jabref/external/DroppedFileHandler.java	2016-05-02 02:08:53.066455332 +0200
+--- jabref-2.11.1/src/main/java/net/sf/jabref/external/DroppedFileHandler.java.jgoodies
++++ jabref-2.11.1/src/main/java/net/sf/jabref/external/DroppedFileHandler.java
 @@ -35,8 +35,7 @@
  import net.sf.jabref.util.Util;
  import net.sf.jabref.util.XMPUtil;
@@ -36,8 +36,8 @@
  
      }
  
---- jabref-2.11.1.orig/src/main/java/net/sf/jabref/gui/CleanUpAction.java	2015-11-16 08:27:56.000000000 +0100
-+++ jabref-2.11.1/src/main/java/net/sf/jabref/gui/CleanUpAction.java	2016-05-02 02:17:12.550416061 +0200
+--- jabref-2.11.1/src/main/java/net/sf/jabref/gui/CleanUpAction.java.jgoodies
++++ jabref-2.11.1/src/main/java/net/sf/jabref/gui/CleanUpAction.java
 @@ -37,8 +37,7 @@
  import net.sf.jabref.undo.NamedCompound;
  import net.sf.jabref.undo.UndoableFieldChange;

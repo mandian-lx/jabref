@@ -1,5 +1,5 @@
---- jabref-2.11.1/build.xml.javadoc	2017-03-05 18:35:20.996176255 +0100
-+++ jabref-2.11.1/build.xml	2017-03-05 18:39:22.781533058 +0100
+--- jabref-2.11.1/build.xml.javadoc
++++ jabref-2.11.1/build.xml
 @@ -50,6 +50,7 @@
  	<property name="build.images" value="${build.dir}/images" />
  	<property name="build.resource" value="${build.dir}/resource" />

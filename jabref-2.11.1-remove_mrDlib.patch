@@ -1,5 +1,5 @@
---- jabref-2.11.1.orig/src/main/java/spl/gui/ImportDialog.java	2015-11-16 08:27:56.000000000 +0100
-+++ jabref-2.11.1/src/main/java/spl/gui/ImportDialog.java	2016-05-02 01:53:52.048003234 +0200
+--- jabref-2.11.1/src/main/java/spl/gui/ImportDialog.java.remove_mrDlib
++++ jabref-2.11.1/src/main/java/spl/gui/ImportDialog.java
 @@ -20,16 +20,16 @@
      public final static int NOMETA = 0;
      public final static int XMP = 1;
@@ -132,8 +132,8 @@
          } else {
              throw new IllegalStateException();
          }
---- jabref-2.11.1.orig/src/main/java/spl/PdfImporter.java	2015-11-16 08:27:56.000000000 +0100
-+++ jabref-2.11.1/src/main/java/spl/PdfImporter.java	2016-05-02 01:58:17.409898979 +0200
+--- jabref-2.11.1/src/main/java/spl/PdfImporter.java.remove_mrDlib
++++ jabref-2.11.1/src/main/java/spl/PdfImporter.java
 @@ -23,11 +23,11 @@
 
  import org.apache.commons.logging.Log;
@@ -297,8 +297,8 @@
      private boolean fieldExists(String string) {
          return (string != null) && !string.isEmpty();
      }
---- jabref-2.11.1.orig/src/main/java/net/sf/jabref/ImportSettingsTab.java	2015-11-16 08:27:56.000000000 +0100
-+++ jabref-2.11.1/src/main/java/net/sf/jabref/ImportSettingsTab.java	2016-05-02 02:03:26.748223149 +0200
+--- jabref-2.11.1/src/main/java/net/sf/jabref/ImportSettingsTab.java.remove_mrDlib
++++ jabref-2.11.1/src/main/java/net/sf/jabref/ImportSettingsTab.java
 @@ -44,10 +44,10 @@
  
      private final JRadioButton radioButtonXmp;

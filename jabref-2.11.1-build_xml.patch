@@ -1,4 +1,4 @@
---- jabref-2.11.1.orig/build.xml
+--- jabref-2.11.1/build.xml.orig
 +++ jabref-2.11.1/build.xml
 @@ -149,7 +168,7 @@
  		<copy file="${osxbin.dir}/MacAdapter.class" todir="${build.classes.osx}" />

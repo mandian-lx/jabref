@@ -34,6 +34,7 @@ BuildRequires:	mvn(com.jgoodies:jgoodies-common)
 BuildRequires:	mvn(com.jgoodies:jgoodies-forms)
 BuildRequires:	mvn(com.jgoodies:jgoodies-looks)
 BuildRequires:	mvn(com.michaelbaranov.microba:microba)
+BuildRequires:	mvn(com.sun.xml.bind:jaxb-xjc)
 BuildRequires:	mvn(mysql:mysql-connector-java)
 BuildRequires:	mvn(net.java.dev.glazedlists:glazedlists)
 BuildRequires:	mvn(net.java.dev.jna:jna)
@@ -171,7 +172,7 @@ sed -i -e '{
 export ANT_OPTS=" -Dlo.lib.dir=%{_libdir}/libreoffice/program/classes/ -Dsystem.lib.dir=%{_javadir} -Djavadoc.encoding=ISO-8859-1 -Djavadoc.docencoding=UTF-8"
 
 # Use system jars
-export CLASSPATH=$(build-classpath antlr antlr3 antlr3-runtime antlr4 antlr4-runtime fontbox glazedlists jempbox jgoodies-common jgoodies-forms jgoodies-looks jna microba mysql-connector-java pdfbox postgresql-jdbc ritopt spin stringtemplate stringtemplate4/ST4 swingx)
+export CLASSPATH=$(build-classpath antlr antlr3 antlr3-runtime antlr4 antlr4-runtime fontbox glazedlists jempbox jgoodies-common jgoodies-forms jgoodies-looks jna microba mysql-connector-java pdfbox postgresql-jdbc spin stringtemplate stringtemplate4/ST4 swingx)
 #   plugins
 export CLASSPATH=$CLASSPATH:$(build-classpath apache-commons-collections apache-commons-lang apache-commons-logging jpf jpf-boot jpfcodegen jpfcodegen-rt velocity)
 #   LibreOffice jars
@@ -185,7 +186,7 @@ export CLASSPATH=$CLASSPATH:$(build-classpath ../../%{_lib}/libreoffice/program/
 
 %install
 # Shell script
-%jpackage_script net.sf.jabref.JabRefMain "" "" antlr:antlr3:antlr3-runtime:antlr4-runtime:apache-commons-cli:apache-commons-logging:glazedlists:guava:jempbox:jgoodies-common:jgoodies-forms:jgoodies-looks:jpf:jpf-boot:jpfcodegen-rt:microba:pdfbox:ritopt:spin:swingx:jabref jabref true
+%jpackage_script net.sf.jabref.JabRefMain "" "" antlr:antlr3:antlr3-runtime:antlr4-runtime:apache-commons-cli:apache-commons-logging:glazedlists:guava:jempbox:jgoodies-common:jgoodies-forms:jgoodies-looks:jpf:jpf-boot:jpfcodegen-rt:microba:pdfbox:spin:swingx:jabref jabref true
 
 # jar
 install -dm 0755 %{buildroot}%{_javadir}/
