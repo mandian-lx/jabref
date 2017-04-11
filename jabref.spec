@@ -172,7 +172,7 @@ sed -i -e '{
 export ANT_OPTS=" -Dlo.lib.dir=%{_libdir}/libreoffice/program/classes/ -Dsystem.lib.dir=%{_javadir} -Djavadoc.encoding=ISO-8859-1 -Djavadoc.docencoding=UTF-8"
 
 # Use system jars
-export CLASSPATH=$(build-classpath antlr antlr3 antlr3-runtime antlr4 antlr4-runtime fontbox glazedlists jempbox jgoodies-common jgoodies-forms jgoodies-looks jna microba mysql-connector-java pdfbox postgresql-jdbc spin stringtemplate stringtemplate4/ST4 swingx)
+export CLASSPATH=$(build-classpath antlr antlr3 antlr3-runtime antlr4 antlr4-runtime fontbox glazedlists guava jempbox jgoodies-common jgoodies-forms jgoodies-looks jna microba mysql-connector-java pdfbox postgresql-jdbc spin stringtemplate stringtemplate4/ST4 swingx)
 #   plugins
 export CLASSPATH=$CLASSPATH:$(build-classpath apache-commons-collections apache-commons-lang apache-commons-logging jpf jpf-boot jpfcodegen jpfcodegen-rt velocity)
 #   LibreOffice jars
