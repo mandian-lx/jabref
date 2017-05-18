@@ -186,7 +186,7 @@
         </fileset>
 
         <fileset dir="/usr/share/java/glassfish-jaxb">
-                <!--include name="jaxb-impl.jar"/-->
+                <include name="jaxb-impl.jar"/>
                 <include name="jaxb-xjc.jar"/>
         </fileset>
     </path>
