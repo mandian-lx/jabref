@@ -64,7 +64,7 @@ BuildRequires:	mvn(org.apache.pdfbox:fontbox)
 BuildRequires:	mvn(org.apache.pdfbox:jempbox)
 BuildRequires:	mvn(org.bouncycastle:bcprov-jdk15on)
 BuildRequires:	mvn(org.jsoup:jsoup)
-#BuildRequires:	spin
+BuildRequires:	spin
 BuildRequires:	swingx < 1.6.5.1	#mvn(org.swinglabs:swingx) --- NOTE: do not update, 1.6.5.1 is broken
 # LibreOffice integration
 BuildRequires:	libreoffice-java	#mvn(org.openoffice:juh)
@@ -178,8 +178,7 @@ sed -i -e '{
 %build
 # Classpath
 #    system jars
-build-jar-repository lib ant antlr antlr3 antlr3-runtime antlr4 antlr4-runtime apache-commons-cli apache-commons-lang3 apache-commons-logging com.sun:tools bcprov-jdk15on fontbox glazedlists guava httpcomponents/httpclient java-diff-utils java-string-similarity jempbox jgoodies-common jgoodies-forms jgoodies-looks json jsoup libreoffice/juh libreoffice/urt libreoffice/ridl libreoffice/unoil microba mysql-connector-java log4j log4j/log4j-core log4j/log4j-api orange-extensions pdfbox postgresql-jdbc stringtemplate4 unirest-java swingx
-# spin
+build-jar-repository lib ant antlr antlr3 antlr3-runtime antlr4 antlr4-runtime apache-commons-cli apache-commons-lang3 apache-commons-logging com.sun:tools bcprov-jdk15on fontbox glazedlists guava httpcomponents/httpclient java-diff-utils java-string-similarity jempbox jgoodies-common jgoodies-forms jgoodies-looks json jsoup libreoffice/juh libreoffice/urt libreoffice/ridl libreoffice/unoil microba mysql-connector-java log4j log4j/log4j-core log4j/log4j-api orange-extensions pdfbox postgresql-jdbc spin stringtemplate4 unirest-java swingx
 
 # binary
 %ant jars
