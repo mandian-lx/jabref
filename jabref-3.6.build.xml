@@ -232,38 +232,22 @@
 
     <target name="generate-jaxb-medline">
       <echo>Generates java files for medline.xsd xjc.</echo>
-      <mkdir dir="src/main/gen/net/sf/jabref/logic/importer/fileformat/medline"/>
+      <!--mkdir dir="src/main/gen/net/sf/jabref/logic/importer/fileformat/medline"/-->
       <xjc destdir="${gen.dir}" package="net.sf.jabref.logic.importer.fileformat.medline" >
          <schema dir="src/main/resources/xjc/medline" includes="medline.xsd"/>
       </xjc>
-      <java classname="com.sun.tools.internal.xjc.XJCFacade" fork="true" failonerror="true" dir=".">
-            <arg value="-d" />
-            <arg value="${gen.dir}" />
-            <arg value="-p" />
-            <arg value="net.sf.jabref.logic.importer.fileformat.medline"/>
-            <arg path="src/main/resources/xjc/medline/medline.xsd" />
-            <classpath refid="classpath.jaxb" />
-      </java>
     </target>
 
     <target name="generate-jaxb-bibtexml">
       <echo>Generates java files for bibtexml.xsd xjc.</echo>
       <!--mkdir dir="src/main/gen/net/sf/jabref/logic/importer/fileformat/bibtexml"/-->
-      <!--xjc destdir="${gen.dir}" package="net.sf.jabref.logic.importer.fileformat.bibtexml" >
+      <xjc destdir="${gen.dir}" package="net.sf.jabref.logic.importer.fileformat.bibtexml" >
          <schema dir="src/main/resources/xjc/bibtexml" includes="bibtexml.xsd"/>
-      </xjc-->
-      <java classname="com.sun.tools.internal.xjc.XJCFacade" fork="true" failonerror="true" dir=".">
-            <arg value="-d" />
-            <arg path="${gen.dir}" />
-            <arg value="-p" />
-            <arg value="net.sf.jabref.logic.importer.fileformat.bibtexml"/>
-            <arg path="src/main/resources/xjc/bibtexml/bibtexml.xsd" />
-            <classpath refid="classpath.jaxb" />
-      </java>
+      </xjc>
     </target>
 
 	<!-- Compiles project -->
-	<target name="compile" depends="generate-antlr3, generate-antlr4">
+	<target name="compile" depends="generate-antlr3, generate-antlr4, generate-jaxb">
 		<mkdir dir="${build.classes}" />
 		<javac destdir="${build.classes}" encoding="UTF8" source="1.8" target="1.8">
 			<src path="${java.dir}" />
