@@ -86,6 +86,7 @@ Requires:	antlr3-java
 Requires:	antlr4
 Requires:	antlr4-runtime
 Requires:	apache-commons-cli >= 1.3
+Requires:	apache-commons-lang3
 Requires:	apache-commons-logging
 Requires:	java-diff-utils
 Requires:	glazedlists
@@ -99,8 +100,10 @@ Requires:	jsoup
 Requires:	libreoffice-java >= 1:3.5.2
 Requires:	log4j
 Requires:	microba
+Requires:	mysql-connector-java
 Requires:	orange-extensions
 Requires:	pdfbox
+Requires:	postgresql-jdbc
 Requires:	ritopt
 Requires:	spin
 Requires:	stringtemplate4
