@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata xmlns="http://fedorahosted.org/xmvn/METADATA/2.0.0">
+  <artifacts>
+
+    <artifact>
+      <groupId>org.openoffice</groupId>
+      <artifactId>unoil</artifactId>
+      <version>SYSTEM</version>
+      <extension>jar</extension>
+      <path>/usr/share/java/libreoffice/unoil.jar</path>
+    </artifact>
+    <artifact>
+      <groupId>org.openoffice</groupId>
+      <artifactId>unoil</artifactId>
+      <version>SYSTEM</version>
+      <extension>pom</extension>
+      <path>/dev/null</path>
+    </artifact>
+
+    <artifact>
+      <groupId>org.openoffice</groupId>
+      <artifactId>ridl</artifactId>
+      <version>SYSTEM</version>
+      <extension>jar</extension>
+      <path>/usr/share/java/libreoffice/ridl.jar</path>
+    </artifact>
+    <artifact>
+      <groupId>org.openoffice</groupId>
+      <artifactId>ridl</artifactId>
+      <version>SYSTEM</version>
+      <extension>pom</extension>
+      <path>/dev/null</path>
+    </artifact>
+
+    <artifact>
+      <groupId>org.openoffice</groupId>
+      <artifactId>juh</artifactId>
+      <version>SYSTEM</version>
+      <extension>jar</extension>
+      <path>/usr/share/java/libreoffice/juh.jar</path>
+    </artifact>
+    <artifact>
+      <groupId>org.openoffice</groupId>
+      <artifactId>juh</artifactId>
+      <version>SYSTEM</version>
+      <extension>pom</extension>
+      <path>/dev/null</path>
+    </artifact>
+
+    <artifact>
+      <groupId>org.openoffice</groupId>
+      <artifactId>jurt</artifactId>
+      <version>SYSTEM</version>
+      <extension>jar</extension>
+      <path>/usr/share/java/libreoffice/jurt.jar</path>
+    </artifact>
+    <artifact>
+      <groupId>org.openoffice</groupId>
+      <artifactId>jurt</artifactId>
+      <version>SYSTEM</version>
+      <extension>pom</extension>
+      <path>/dev/null</path>
+    </artifact>
+
+  </artifacts>
+</metadata>
+

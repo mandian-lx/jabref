@@ -1,0 +1,10 @@
+--- jabref-3.8.2/build.gradle.deps
++++ jabref-3.8.2/build.gradle
+@@ -42,6 +42,7 @@
+ apply from: 'eclipse.gradle'
+ apply from: 'localization.gradle'
+ apply from: 'xjc.gradle'
++apply plugin: 'maven'
+ 
+ group = "net.sf.jabref"
+ version = "3.8.2"

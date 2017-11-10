@@ -1,116 +1,97 @@
 %{?_javapackages_macros:%_javapackages_macros}
-%define debug_package %{nil}
 
 %define oname JabRef
 %define name %(echo %oname | tr [:upper:] [:lower:])
 
 Summary:	A graphical Java application for editing BibTeX and Biblatex databases
 Name:		%{name}
-Version:	3.6
-Release:	1
+Version:	3.8.2
+Release:	0
 License:	MIT
 Group:		Editors
 URL:		https://www.jabref.org/
 Source0:	https://github.com/%{oname}/%{name}/archive/v%{version}/%{name}-%{version}.tar.gz
 # Adapted from manpage generated with help2man
 #    help2man -L C -s 1 -N -o jabref.1 /usr/bin/jabref 
-Source1:	%{name}.3.6
-# FIXME: gradle has not been packaged yet.
-#	(https://issues.openmandriva.org/show_bug.cgi?id=1665)
-Source2:	%{name}-3.6.build.xml
-Patch0:		%{name}-3.6-json.patch
-Patch1:		%{name}-3.6-MacAdapter.patch
-# The following patch is because there is an outdate version
-# of guava in repo. It can be safely removed when guava 20.0
-# will be provided.
-Patch2:		%{name}-3.6-guava.patch
-BuildArch:	noarch
+Source1:	%{name}.3.8
+# xjc schemas
+Source10:	http://www.loc.gov/mods/xml.xsd
+Source11:	http://www.loc.gov/standards/xlink/xlink.xsd
+Source100:	%{name}-3.8.2-swingx-metadata.xml
+Source101:	%{name}-3.8.2-libreoffice-metadata.xml
+Patch1:		%{name}-3.8.2-gradle-local-mode.patch
+Patch2:		%{name}-3.8.2-gradle-remove-unused-plugin.patch
+Patch3:		%{name}-3.8.2-gradle-add-missing-dependencies.patch
+Patch4:		%{name}-3.8.2-gradle-add-maven-plugin.patch
+Patch5:		%{name}-3.8.2-xjc-use-local-schemas.patch
+Patch6:		%{name}-3.8.2-dont-check-for-updates.patch
+Patch7:		%{name}-3.8.2-remove-osx-support.patch
+Patch8:		%{name}-3.8.2-guava_17.patch
+Patch9:		%{name}-3.8.2-use-system-citationstyles.patch
 
 BuildRequires:	imagemagick
 BuildRequires:	librsvg
-BuildRequires:	javapackages-local
-BuildRequires:	ant
-BuildRequires:	mvn(com.google.guava:guava)
-BuildRequires:	mvn(com.googlecode.java-diff-utils:diffutils)
-BuildRequires:	mvn(com.jgoodies:jgoodies-common)
-BuildRequires:	mvn(com.jgoodies:jgoodies-forms)
-BuildRequires:	mvn(com.jgoodies:jgoodies-looks)
-BuildRequires:	mvn(com.mashape.unirest:unirest-java)
-BuildRequires:	mvn(com.michaelbaranov.microba:microba)
-BuildRequires:	mvn(com.sun.codemodel:codemodel)
-BuildRequires:	mvn(com.sun.istack:istack-commons-runtime)
-BuildRequires:	mvn(com.sun.istack:istack-commons-tools)
-BuildRequires:	mvn(com.sun.xml.bind:jaxb-impl)
-BuildRequires:	mvn(com.sun.xml.bind:jaxb-xjc)
-BuildRequires:	mvn(info.debatty:java-string-similarity)
+BuildRequires:	jpackage-utils
+BuildRequires:	gradle-local
+#BuildRequires:	maven-local
+BuildRequires:	citationstyles-locales #-java #mvn(org.citationstyles:locales)	#NEW
+BuildRequires:	citationstyles-styles #-java #mvn/org.citationstyles:styles)	#NEW
+BuildRequires:	libreoffice-java						#mvn(org.openoffice:juh)
+BuildRequires:	libreoffice-java						#mvn(org.openoffice:jurt)
+BuildRequires:	libreoffice-java						#mvn(org.openoffice:ridl)
+BuildRequires:	libreoffice-java						#mvn(org.openoffice:unoil)
+BuildRequires:	mvn(com.github.lgooddatepicker:LGoodDatePicker)			#NEW, uploaded
+BuildRequires:	mvn(com.google.guava:guava)					# >= 20.0
+BuildRequires:	mvn(com.googlecode.java-diff-utils:diffutils)			#NEW, :1.3.0', uploaded
+BuildRequires:	mvn(com.impossibl.pgjdbc-ng:pgjdbc-ng)				#NEW, uploaded
+BuildRequires:	mvn(com.jgoodies:jgoodies-common)				#updated, uploaded
+BuildRequires:	mvn(com.jgoodies:jgoodies-forms)				#updated, uploaded
+BuildRequires:	mvn(com.jgoodies:jgoodies-looks)				#updated, uploaded
+BuildRequires:	mvn(com.mashape.unirest:unirest-java)				#NEW, uploaded
+BuildRequires:	mvn(com.yuvimasory:orange-extensions)				#NEW, uploaded
+BuildRequires:	mvn(commons-cli:commons-cli) >= 1.3.1
+BuildRequires:	mvn(commons-codec:commons-codec)
+BuildRequires:	mvn(commons-logging:commons-logging)
+BuildRequires:	mvn(de.undercouch:citeproc-java)				#NEW, uploaded
+BuildRequires:	mvn(info.debatty:java-string-similarity)			#NEW, uploaded
 BuildRequires:	mvn(mysql:mysql-connector-java)
-BuildRequires:	mvn(net.java.dev.glazedlists:glazedlists_java15)
-BuildRequires:	mvn(org.apache.httpcomponents:httpclient)
-BuildRequires:	mvn(org.json:json)
-BuildRequires:	mvn(postgresql:postgresql)
-BuildRequires:	orange-extensions
+BuildRequires:	mvn(net.java.dev.glazedlists:glazedlists)			# updated, uploaded
 BuildRequires:	mvn(org.antlr:antlr)
 BuildRequires:	mvn(org.antlr:antlr-runtime)
 BuildRequires:	mvn(org.antlr:antlr4)
 BuildRequires:	mvn(org.antlr:antlr4-runtime)
-BuildRequires:	mvn(org.antlr:ST4)
-BuildRequires:	mvn(org.apache.commons:commons-cli) >= 1.3.1
 BuildRequires:	mvn(org.apache.commons:commons-lang3)
-BuildRequires:	mvn(org.apache.commons:commons-logging)
 BuildRequires:	mvn(org.apache.logging.log4j:log4j-jcl)
 BuildRequires:	mvn(org.apache.logging.log4j:log4j-api)
 BuildRequires:	mvn(org.apache.logging.log4j:log4j-core)
-BuildRequires:	mvn(org.apache.pdfbox:pdfbox)
-BuildRequires:	mvn(org.apache.pdfbox:fontbox)
-BuildRequires:	mvn(org.apache.pdfbox:jempbox)
-BuildRequires:	mvn(org.bouncycastle:bcprov-jdk15on)
-BuildRequires:	mvn(org.jsoup:jsoup)
-BuildRequires:	spin
-BuildRequires:	swingx < 1.6.5.1	#mvn(org.swinglabs:swingx) --- NOTE: do not update, 1.6.5.1 is broken
-# LibreOffice integration
-BuildRequires:	libreoffice-java	#mvn(org.openoffice:juh)
-BuildRequires:	libreoffice-java	#mvn(org.openoffice:jurt)
-BuildRequires:	libreoffice-java	#mvn(org.openoffice:ridl)
-BuildRequires:	libreoffice-java	#mvn(org.openoffice:unoil)
-# tests
+BuildRequires:	mvn(org.apache.pdfbox:pdfbox)					#updated, uploaded
+BuildRequires:	mvn(org.apache.pdfbox:fontbox)					#updated, uploaded
+BuildRequires:	mvn(org.apache.pdfbox:jempbox)					#updated, uploaded
+BuildRequires:	mvn(org.bouncycastle:bcprov-jdk15on)				#updated, uploaded
+BuildRequires:	mvn(org.jsoup:jsoup)						#NEW, uploaded
+BuildRequires:	mvn(org.xmlunit:xmlunit-core)					#updated, uploaded
+BuildRequires:	mvn(org.xmlunit:xmlunit-matchers)				#updated, uploaded
+BuildRequires:	mvn(spin:spin)							#NEW, uploaded
+BuildRequires:	swingx <= 1.6.1 #mvn(org.swinglabs:swingx:1.6.1)		# do not update, 1.6.5.1 is broken
+#   tests
 #BuildRequires:	mvn(junit:junit)
-#BuildRequires:	mvn(org.mockito:mockito-core)
-#BuildRequires:	mvn(com.github.tomakehurst:wiremock)
-#BuildRequires:	mvn(org.assertj:assertj-swing-junit)
+#BuildRequires:	mvn(org.mockito:mockito-core)					#FIXME: not packaged yew
+#BuildRequires:	mvn(com.github.tomakehurst:wiremock)				#FIXME: not packaged yew
+#BuildRequires:	mvn(org.assertj:assertj-swing-junit)				#FIXME: not packaged yew
+#   required by gradle plugins
+BuildRequires:	mvn(org.python:jython-standalone)
+BuildRequires:	mvn(com.sun.xml.bind:jaxb-xjc)
 
-Requires:	java-headless >= 1:1.6
-Requires:	jpackage-utils
-Requires:	antlr
-Requires:	antlr3
-Requires:	antlr3-java
-Requires:	antlr4
-Requires:	antlr4-runtime
-Requires:	apache-commons-cli >= 1.3
-Requires:	apache-commons-lang3
-Requires:	apache-commons-logging
-Requires:	java-diff-utils
-Requires:	glazedlists
-Requires:	java-string-similarity
-Requires:	jempbox
-Requires:	jgoodies-common >= 1.4.0
-Requires:	jgoodies-forms >= 1.6.0
-Requires:	jgoodies-looks >= 2.5.0
-Requires:	json
-Requires:	jsoup
-Requires:	libreoffice-java >= 1:3.5.2
-Requires:	log4j
-Requires:	microba
-Requires:	mysql-connector-java
-Requires:	orange-extensions
-Requires:	pdfbox
-Requires:	postgresql-jdbc
-Requires:	ritopt
-Requires:	spin
-Requires:	stringtemplate4
-Requires:	swingx
-Requires:	unirest-java
-# libreoffice integration
-Requires:	libreoffice-java >= 1:3.5.2
+Requires:	citationstyles-locales
+Requires:	citationstyles-styles
+Requires:	libreoffice-java				#mvn(org.openoffice:juh)
+Requires:	libreoffice-java				#mvn(org.openoffice:jurt)
+Requires:	libreoffice-java				#mvn(org.openoffice:ridl)
+Requires:	libreoffice-java				#mvn(org.openoffice:unoil)
+Requires:	mvn(commons-cli:commons-cli) >= 1.3.1
+Requires:	swingx <= 1.6.1					#mvn(org.swinglabs:swingx:1.6.1)
+
+BuildArch:      noarch
 
 %description
 JabRef is a graphical Java application for editing BibTeX and Biblatex .bib
@@ -125,9 +106,8 @@ JabRef can import from and export to several formats, and you can customize
 export filters. JabRef can be run as a command line application to convert
 from any import format to any export format.
 
-%files
+%files -f .mfiles
 %{_bindir}/%{name}
-%{_javadir}/%{name}.jar
 %{_iconsdir}/hicolor/*/apps/%{name}.png
 %{_iconsdir}/hicolor/*/apps/%{name}.svg
 %{_datadir}/pixmaps/%{name}.xpm
@@ -141,6 +121,18 @@ from any import format to any export format.
 
 #----------------------------------------------------------------------------
 
+%package javadoc
+Summary:	Javadoc for JabRef
+Group:		Documentation
+BuildArch:	noarch
+
+%description javadoc
+API documentation for JabRef.
+
+%files javadoc -f .mfiles-javadoc
+
+#----------------------------------------------------------------------------
+
 %prep
 %setup -q -n %{name}-%{version}
 
@@ -149,9 +141,18 @@ find . -name "*.jar" -delete
 find . -name "*.class" -delete
 
 # Apply all patches
-%patch0 -p1 -b .json
-%patch1 -p1 -b .MacAdapter
-%patch2 -p1 -b .guava
+%patch1 -p1 -b .gradle_local
+%patch2 -p1 -b .plugin
+%patch3 -p1 -b .deps
+%patch4 -p1 -b .maven
+%patch5 -p1 -b .xjc
+%patch6 -p1 -b .updates
+%patch7 -p1 -b .osx
+%patch8 -p1 -b .guava
+%patch9 -p1 -b .citationstyles
+
+# copy xjc schemas
+cp %{SOURCE10} %{SOURCE11} src/main/resources/xjc/mods
 
 # .desktop
 cat > openmandriva-%{name}.desktop << EOF
@@ -166,11 +167,18 @@ Type=Application
 Categories=Office;Database;
 EOF
 
-# Add build.xml
-cp %{SOURCE2} ./build.xml
+#  fix groupId:asrtifactId
+sed -i -e 's|com.github.bkromhout:java-diff-utils|com.googlecode.java-diff-utils:diffutils|' build.gradle
 
-# Fix version in build.xml
-sed -i -e 's|#version#|%{version}|g' ./build.xml
+#  add missing maven metadata
+#     SwingX
+sed -e 's|@LIBDIR@|%{_libdir}|g' %{SOURCE100} > swingx-maven-metadata.xml
+%mvn_config resolverSettings/metadataRepositories/repository swingx-maven-metadata.xml
+#     LibreOffice
+%mvn_config resolverSettings/metadataRepositories/repository %{SOURCE101}
+
+#   remove OSx connector
+rm -fr src/main/java/osx/
 
 # Fix LibreOffice path
 sed -i -e '{
@@ -179,40 +187,34 @@ sed -i -e '{
 	     s|/opt/openoffice.org/basis3.0|%{_libdir}/libreoffice|
 	   }' src/main/java/net/sf/jabref/preferences/JabRefPreferences.java
 
-%build
-# Classpath
-#    system jars
-build-jar-repository lib ant antlr antlr3 antlr3-runtime antlr4 antlr4-runtime apache-commons-cli apache-commons-lang3 \
-                         apache-commons-logging com.sun:tools bcprov-jdk15on fontbox glazedlists guava httpcomponents/httpclient \
-                         java-diff-utils java-string-similarity jempbox jgoodies-common jgoodies-forms jgoodies-looks json jsoup \
-                         libreoffice/juh libreoffice/urt libreoffice/ridl libreoffice/unoil microba mysql-connector-java log4j \
-                         log4j/log4j-core log4j/log4j-api orange-extensions pdfbox postgresql-jdbc spin stringtemplate4 \
-                         unirest-java swingx
-#    jabx dependencies
-build-jar-repository lib com.sun.codemodel:codemodel com.sun.istack:istack-commons-runtime com.sun.istack:istack-commons-tools \
-                         com.sun.xml.dtd-parser:dtd-parser com.sun.xml.txw2:txw2 com.sun.xsom:xsom org.kohsuke.rngom:rngom \
-                         xml-resolver:xml-resolver
 
-# binary
-export ANT_HOME=%{_datadir}/ant/
-%ant jars
+%build
+# jar
+gradle build javadoc install -x test --offline -s
+
+# FIXME: remove dependencies without maven stuff from pom.xml
+%pom_remove_dep org.openoffice:jurt build/poms/pom-default.xml
+%pom_remove_dep org.openoffice:ridl build/poms/pom-default.xml
+%pom_remove_dep org.openoffice:juh build/poms/pom-default.xml
+%pom_remove_dep org.openoffice:unoil build/poms/pom-default.xml
+%pom_remove_dep org.swinglabs.swingx:swingx-core build/poms/pom-default.xml
+
+# mv build/libs/%{oname}-%{version}.jar build/libs/%{name}.jar
+%mvn_artifact build/poms/pom-default.xml build/libs/%{oname}-%{version}.jar
+%mvn_file :%{oname} %{name}
 
 %install
-# jar
-install -dm 0755 %{buildroot}%{_javadir}/
-install -pm 0644 buildant/lib/%{oname}-%{version}.jar %{buildroot}%{_javadir}/%{name}.jar
-
-# javadoc
-#install -dm 0755 %{buildroot}%{_javadocdir}/%{name}/
-#cp -r build/docs/API/* %{buildroot}%{_javadocdir}/%{name}/
+%mvn_install -J build/docs/javadoc
 
 # launcher
-%jpackage_script net.sf.jabref.JabRefMain "" "" antlr:antlr3:antlr3-runtime:antlr4:antlr4-runtime:bcprov:commons-cli:commons-lang3:commons-logging:fontbox:glazedlists:guava:httpcomponents/client:java-diff-utils/diffutils:java-string-similarity:jempbox:jgoodies-common:jgoodies-forms:jgoodies-looks:json:jsoup:libreoffice/juh:libreoffice/jurt:libreoffice/ridl:libreoffice/unoil:mysql-connector-java:log4j:log4j/log4j-api:log4j/log4j-core:log4j/log4j-jcl:microba:orange-extensions:pdfbox:postgresql-jdbc:ritopt:spin:stringtemplate4:swingx:unirest-java:jabref jabref true
+%jpackage_script net.sf.jabref.JabRefMain "" "" antlr:antlr3:antlr3-runtime:antlr4:antlr4-runtime:bcprov:citeproc-java:commons-cli:commons-codec:commons-lang3:commons-logging:fontbox:glazedlists:guava:httpcomponents/client:java-diff-utils/diffutils:jbibtex:java-string-similarity:jempbox:jgoodies-common:jgoodies-forms:jgoodies-looks:json:jsoup:lgooddatepicker/LGoodDatePicker:libreoffice/juh:libreoffice/jurt:libreoffice/ridl:libreoffice/unoil:mysql-connector-java:log4j:log4j/log4j-api:log4j/log4j-core:log4j/log4j-jcl:pdfbox:pgjdbc-ng:spin:stringtemplate4:swingx:unirest-java:xmlunit-core:xmlunit-matchers:jabref jabref true
+#:orange-extensions
 
 
 # icons
-# FIXME: imagemagick makes empty images (maybe a bug in inkskape maybe
-#        a bug in image) and rsvg-convert works properly for png only
+# FIXME: imagemagick produces empty images (maybe
+#	a bug in inkskape maybe a bug into the icon) and
+#	rsvg-convert works properly for png only
 for d in 16 32 48 64 72 128 256
 do
 	install -dm 0755 %{buildroot}%{_iconsdir}/hicolor/${d}x${d}/apps/

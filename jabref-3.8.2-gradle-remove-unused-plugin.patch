@@ -1,0 +1,241 @@
+--- jabref-3.8.2/build.gradle.plugin	2017-04-04 22:18:17.397390602 +0200
++++ jabref-3.8.2/build.gradle	2017-04-04 22:18:58.700500177 +0200
+@@ -10,50 +10,50 @@
+         }
+     }
+     dependencies {
+-        classpath 'com.github.edwgiz:maven-shade-plugin.log4j2-cachefile-transformer:2.1'
++//      classpath 'com.github.edwgiz:maven-shade-plugin.log4j2-cachefile-transformer:2.1'
+     }
+ }
+ 
+ plugins {
+-    id 'com.gradle.build-scan' version '1.3'
+-    id "com.install4j.gradle" version "6.1.3"
+-    id 'com.github.johnrengelman.shadow' version '1.2.4'
+-    id "com.simonharrer.modernizer" version "1.4.0-1"
+-    id 'me.champeau.gradle.jmh' version '0.3.1'
++//  id 'com.gradle.build-scan' version '1.3'
++//  id "com.install4j.gradle" version "6.1.3"
++//  id 'com.github.johnrengelman.shadow' version '1.2.4'
++//  id "com.simonharrer.modernizer" version "1.4.0-1"
++//  id 'me.champeau.gradle.jmh' version '0.3.1'
+     // If this is updated to 0.0.9, check configurations.errorprone
+-    id "net.ltgt.errorprone" version "0.0.8"
++//  id "net.ltgt.errorprone" version "0.0.8"
+ }
+ 
+ // use the gradle build scan feature: https://scans.gradle.com/get-started
+-buildScan {
+-    licenseAgreementUrl = 'https://gradle.com/terms-of-service'
+-    licenseAgree = 'yes'
+-}
++//buildScan {
++//  licenseAgreementUrl = 'https://gradle.com/terms-of-service'
++//  licenseAgree = 'yes'
++//}
+ 
+ apply plugin: "java"
+ apply plugin: "application"
+-apply plugin: "project-report"
++apply plugin: "project-report"
+ apply plugin: 'jacoco'
+-apply plugin: 'install4j'
+-apply plugin: 'me.champeau.gradle.jmh'
++//apply plugin: 'install4j'
++//apply plugin: 'me.champeau.gradle.jmh'
+ 
+-apply plugin: 'checkstyle'
++//apply plugin: 'checkstyle'
+ 
+-apply from: 'eclipse.gradle'
++apply from: 'eclipse.gradle'
+ apply from: 'localization.gradle'
+ apply from: 'xjc.gradle'
+ 
+ group = "net.sf.jabref"
+ version = "3.8.2"
+ project.ext.threeDotVersion = "3.8.2.0"
+-project.ext.install4jDir = hasProperty("install4jDir") ? getProperty("install4jDir") : (OperatingSystem.current().isWindows() ? 'C:/Program Files/install4j6' : 'install4j6')
++//project.ext.install4jDir = hasProperty("install4jDir") ? getProperty("install4jDir") : (OperatingSystem.current().isWindows() ? 'C:/Program Files/install4j6' : 'install4j6')
+ sourceCompatibility = 1.8
+ targetCompatibility = 1.8
+ mainClassName = "net.sf.jabref.JabRefMain"
+ 
+-install4j {
+-    installDir = file(project.ext.install4jDir)
+-}
++//install4j {
++//    installDir = file(project.ext.install4jDir)
++//}
+ 
+ 
+ repositories {
+@@ -153,9 +153,9 @@
+                 "year": String.valueOf(Calendar.getInstance().get(Calendar.YEAR)),
+                 "authors": new File('AUTHORS').readLines().findAll { !it.startsWith("#") }.join(", "),
+                 "developers": new File('DEVELOPERS').readLines().findAll { !it.startsWith("#") }.join(", "))
+-        filteringCharset = 'UTF-8'
++//      filteringCharset = 'UTF-8'
+     }
+-    filteringCharset = 'UTF-8'
++//  filteringCharset = 'UTF-8'
+ 
+     filesMatching("resource/**/meta.xml") {
+         expand version: project.version
+@@ -280,36 +280,36 @@
+     }
+ }
+ 
+-shadowJar {
+-    classifier 'fat'
+-
+-    transform(new com.github.jengelman.gradle.plugins.shadow.transformers.Transformer() {
+-
+-        // this is an adapter required for generating a fat jar with correct log4j2 output
+-
+-        com.github.edwgiz.mavenShadePlugin.log4j2CacheTransformer.PluginsCacheFileTransformer target = new com.github.edwgiz.mavenShadePlugin.log4j2CacheTransformer.PluginsCacheFileTransformer();
+-
+-        @Override
+-        boolean canTransformResource(FileTreeElement element) {
+-            return target.canTransformResource(element.getPath());
+-        }
+-
+-        @Override
+-        void transform(String path, InputStream is, List<com.github.jengelman.gradle.plugins.shadow.relocation.Relocator> relocators) {
+-            target.processResource(path, is, relocators);
+-        }
+-
+-        @Override
+-        boolean hasTransformedResource() {
+-            return target.hasTransformedResource();
+-        }
+-
+-        @Override
+-        void modifyOutputStream(org.apache.tools.zip.ZipOutputStream jos) {
+-            target.modifyOutputStream(jos);
+-        }
+-    })
+-}
++//shadowJar {
++//    classifier 'fat'
++//
++//    transform(new com.github.jengelman.gradle.plugins.shadow.transformers.Transformer() {
++//
++//        // this is an adapter required for generating a fat jar with correct log4j2 output
++//
++//        com.github.edwgiz.mavenShadePlugin.log4j2CacheTransformer.PluginsCacheFileTransformer target = new com.github.edwgiz.mavenShadePlugin.log4j2CacheTransformer.PluginsCacheFileTransformer();
++//
++//        @Override
++//        boolean canTransformResource(FileTreeElement element) {
++//            return target.canTransformResource(element.getPath());
++//        }
++//
++//        @Override
++//        void transform(String path, InputStream is, List<com.github.jengelman.gradle.plugins.shadow.relocation.Relocator> relocators) {
++//            target.processResource(path, is, relocators);
++//        }
++//
++//        @Override
++//        boolean hasTransformedResource() {
++//            return target.hasTransformedResource();
++//        }
++//
++//        @Override
++//        void modifyOutputStream(org.apache.tools.zip.ZipOutputStream jos) {
++//            target.modifyOutputStream(jos);
++//        }
++//    })
++//}
+ 
+ /*
+  * Changes project.version to VERSION--snapshot--DATE--GIT_HASH
+@@ -345,37 +345,38 @@
+ }
+ 
+ // has to be defined AFTER 'dev' things to have the correct project.version
+-task media(type: com.install4j.gradle.Install4jTask, dependsOn: "releaseJar") {
+-    projectFile = file('jabref.install4j')
+-    release = project.version
+-    winKeystorePassword = System.getenv('CERTIFICATE_PW')
+-    macKeystorePassword = System.getenv('CERTIFICATE_PW')
+-    variables = [
+-            versionFourDots: project.ext.threeDotVersion,
+-            buildFileName  : jar.archiveName,
+-            version        : project.version
+-    ]
+-
+-    doLast {
+-        copy {
+-            from "build/install4j"
+-            into "build/releases"
+-        }
+-    }
+-}
+ 
+-checkstyle {
+-    // do not use other packages for checkstyle, excluding gen(erated) sources
+-    checkstyleMain.source = "src/main/java"
+-    toolVersion = '6.17'
+-}
++//task media(type: com.install4j.gradle.Install4jTask, dependsOn: "releaseJar") {
++//    projectFile = file('jabref.install4j')
++//    release = project.version
++//    winKeystorePassword = System.getenv('CERTIFICATE_PW')
++//    macKeystorePassword = System.getenv('CERTIFICATE_PW')
++//    variables = [
++//            versionFourDots: project.ext.threeDotVersion,
++//            buildFileName  : jar.archiveName,
++//            version        : project.version
++//    ]
++//
++//    doLast {
++//        copy {
++//            from "build/install4j"
++//            into "build/releases"
++//        }
++//    }
++//}
++
++//checkstyle {
++//    // do not use other packages for checkstyle, excluding gen(erated) sources
++//    checkstyleMain.source = "src/main/java"
++//    toolVersion = '6.17'
++//}
+ 
+ task release(dependsOn: ["media", "releaseJar"]) {
+     group = 'JabRef - Release'
+     description 'Creates a release for all target platforms.'
+ }
+ 
+-task releaseJar(dependsOn: "shadowJar") {
++task releaseJar {
+     group = 'JabRef - Release'
+     description "Creates a Jar release."
+ 
+@@ -391,14 +392,14 @@
+     }
+ }
+ 
+-jmh {
+-    warmupIterations = 5
+-    iterations = 10
+-    fork = 2
+-}
+-
+-modernizer {
+-    // We have more than 20 issues, which are not fixed yet. Nevertheless, we produce the modernizer output.
+-    // See https://github.com/andrewgaul/modernizer-maven-plugin for more information on modernizer
+-    failOnViolations = false
+-}
++//jmh {
++//    warmupIterations = 5
++//    iterations = 10
++//    fork = 2
++//}
++
++//modernizer {
++//    // We have more than 20 issues, which are not fixed yet. Nevertheless, we produce the modernizer output.
++//    // See https://github.com/andrewgaul/modernizer-maven-plugin for more information on modernizer
++//    failOnViolations = false
++//}

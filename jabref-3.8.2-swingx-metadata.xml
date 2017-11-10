@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata xmlns="http://fedorahosted.org/xmvn/METADATA/2.0.0">
+  <artifacts>
+
+    <artifact>
+      <groupId>org.swinglabs.swingx</groupId>
+      <artifactId>swingx-core</artifactId>
+      <version>SYSTEM</version>
+      <extension>jar</extension>
+      <path>/usr/share/java/swingx.jar</path>
+    </artifact>
+    <artifact>
+      <groupId>org.openoffice</groupId>
+      <artifactId>swingx-core</artifactId>
+      <version>SYSTEM</version>
+      <extension>pom</extension>
+      <path>/dev/null</path>
+    </artifact>
+
+  </artifacts>
+</metadata>
+

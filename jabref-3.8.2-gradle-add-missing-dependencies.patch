@@ -1,0 +1,28 @@
+--- jabref-3.8.2/build.gradle.deps
++++ jabref-3.8.2/build.gradle
+@@ -126,6 +126,14 @@
+ 
+     compile 'com.github.lgooddatepicker:LGoodDatePicker:8.3.0'
+ 
++    compile 'commons-cli:commons-cli:SYSTEM'
++    compile 'commons-codec:commons-codec:SYSTEM'
++    compile 'org.json:json:SYSTEM'
++    compile 'org.jbibtex:jbibtex:SYSTEM'
++    compile 'spin:spin:SYSTEM'
++    runtime 'org.bouncycastle:bcprov-jdk15on:SYSTEM'
++//  compile 'com.yuvimasory:orange-extensions:SYSTEM'
++    
+     testCompile 'junit:junit:4.12'
+     testCompile 'org.mockito:mockito-core:2.6.2'
+     testCompile 'com.github.tomakehurst:wiremock:2.5.0'
+--- jabref-3.8.2/xjc.gradle.dep
++++ jabref-3.8.2/xjc.gradle
+@@ -1,6 +1,7 @@
+ 
+ dependencies {
+     xjc 'com.sun.xml.bind:jaxb-xjc:2.2.4-1'
++    xjc 'com.sun.xml.bind:jaxb-impl:SYSTEM' 
+ }
+ 
+ task xjc {
+

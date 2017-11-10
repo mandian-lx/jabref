@@ -3,7 +3,12 @@ old_sources:
   jabref.2.10: 9134565bb5bc6fbb7ce5b4c812f65681ad9b7889
   jabref-2.11.1.tar.gz:  d088c1d80da7ef906551f7b1dc95d617d376de01
   jabref.2.11.1: d7c03b1aa6344104205c213ca80b3bd20b2753b9
-sources:
   jabref-3.6.tar.gz: f407287ca7a68575498b7638b14da04064692f46
   jabref.3.6:  b63fd973c338e54d80dba10d3f9d445facd03ac8
   jabref-3.6.build.xml:  0099bd6e79cd020650b741cbe9d20d9c749344ca
+sources:
+  jabref-3.8.2.tar.gz: b4ed5ea2256cb7533b4ec5cb911af57ec581a497
+  jabref.3.8: f77e6a84bcda6cdaee6f31d9835fef84cbbd6c08
+  jabref-3.8.2-swingx-metadata.xml: fb758bb0dd761cc4554a4544ffbce8f87799c54c
+  jabref-3.8.2-libreoffice-metadata.xml: 4f55e17411ee2b3463e390baf4fada52922a9992
+

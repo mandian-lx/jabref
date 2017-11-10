@@ -1,0 +1,12 @@
+--- jabref-3.8.2/src/main/java/net/sf/jabref/JabRefGUI.java.update
++++ jabref-3.8.2/src/main/java/net/sf/jabref/JabRefGUI.java
+@@ -61,7 +61,7 @@
+                 .orElse(Globals.prefs.get(JabRefPreferences.LAST_FOCUSED));
+ 
+         openWindow();
+-        JabRefGUI.checkForNewVersion(false);
++        /* JabRefGUI.checkForNewVersion(false); */
+     }
+ 
+     public static void checkForNewVersion(boolean manualExecution) {
+
